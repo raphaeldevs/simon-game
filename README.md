@@ -20,7 +20,7 @@ Esse projeto surgiu de uma inspiração de um dev que havia feito um jogo pareci
 ### Sobre o código
 ---
 Eu criei um objeto chamado Game que contém funções e valores booleanos que controlam o estado do jogo. Basicamente todos os métodos surgem dele. Usei também event listeners para ouvir os clicks nos buttons e o teclado.
-A `feature/1.0` foi a primeira versão do projeto, eu usei algumas features do ES6 como `const` e arrow functions, no CSS usei grid (vou trabalhar na responsividade também), e no HTML usei o dataset `data-color` e `data-index`.
+A `feature/1.0` é versão mais estável do projeto, a quem me trás mais confiança mas as outras versões estão nesse repositório. Eu usei algumas features do ES6 como `const` e arrow functions, no CSS usei grid (vou trabalhar na responsividade também), e no HTML usei o dataset `data-color` e `data-index`.
 
 
 
