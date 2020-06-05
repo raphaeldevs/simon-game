@@ -123,7 +123,9 @@ function handleClickController(event) {
 document.addEventListener('keypress', handleKeyPressController)
 
 function handleKeyPressController(event) {
-  console.log(event.key)
+  if (Game.canStart && event.key === "Enter") {
+    Game.start()
+  }
 }
 
 //game.start => clickListeners, set variables
