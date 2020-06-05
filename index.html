@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt_br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Switch Game</title>
 
+  <!-- Estilo CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  
+
+  <!-- Estrutura
+    page-game: container
+      game-grid: grid page
+        header
+        .buttons0grid
+        aside
+          header
+          ul
+  -->
+
+
+  <div id="page-game">
+    <main id="game-grid">
+      <header></header>
+
+      <div class="buttons-grid">
+        <div data-color="red" class="button"></div>
+        <div data-color="green" class="button"></div>
+        <div data-color="blue" class="button"></div>
+        <div data-color="yellow" class="button"></div>
+      </div>
+
+      <aside>
+        <header>
+          <h3>Recorde</h3>
+        </header>
+
+        <ul class="record-list"></ul>
+      </aside>
+
+    </main>
+  </div>
+
 </body>
+
 </html>
