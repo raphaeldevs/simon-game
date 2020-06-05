@@ -4,7 +4,7 @@ const Game = {
   start: function() {
     this.canStart = false
     this.started = true
-    this.innerLevel()
+    this.innerLevel(`Level ${this.currentLevel}`)
 
     setTimeout(() => {
       this.createSequence()
@@ -16,6 +16,8 @@ const Game = {
 
     this.sequence = []
     this.sequencePlayer = []
+    this.currentLevel = []
+    this.innerLevel("PRESS ENTER TO PLAY")
 
     this.animate.gameOver()
     this.playSong.gameOver()
@@ -52,7 +54,7 @@ const Game = {
       this.sequencePlayer = []
       
       setTimeout(() => {
-        this.innerLevel()
+        this.innerLevel(`Level ${this.currentLevel}`)
         this.createSequence()
       }, 900);
     }
@@ -105,9 +107,9 @@ const Game = {
     button: color => new Audio(`../sounds/${color}.mp3`).play(),
     gameOver: () => { new Audio(`../sounds/wrong.mp3`).play()}
   },
-  innerLevel: function () {
+  innerLevel: function (message) {
     const levelElementDom = document.querySelector("#game-grid > header h1")
-    levelElementDom.textContent = `Level ${this.currentLevel}`
+    levelElementDom.textContent = `Level ${message}`
   }
 }
 
