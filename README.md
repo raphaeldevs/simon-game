@@ -1,3 +1,3 @@
 <h1 align="center">
-[![Imagem do projeto](Switch Game "Imagem do projeto")](/switchImage.png "Imagem do projeto")
+  <img alt="Switch Game" src="switchImage.png">
 </h1>
