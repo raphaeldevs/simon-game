@@ -20,13 +20,15 @@ const Game = {
   currentSequence: [],
   currentLevel: 0,
   record: 0,
+  includeSequence: function (color) {
+    this.sequence.push(color)
+  },
   createSequence: function() {
     const random = Math.floor(Math.random() * 4) //from 0 to 3
     const buttonRamdomized = buttons[random]
     const buttonColor = buttonRamdomized.dataset.color
 
     this.sequence.push(buttonColor)
-    this.currentSequence = []
 
     this.animate.bip(buttonRamdomized)
     this.playSong.button(buttonColor)
@@ -36,29 +38,46 @@ const Game = {
   animate: {
     gameOver: () => {
       const background = document.querySelector("#page-game")
-
-      const keyframe = [
-        { backgroundColor: "red" },
-        { backgroundColor: "var(--black)" }
-      ]
-      const options = {
-        duration: 80,
-        iterations: 3
+      const animation = {
+        keyframe: [
+          { backgroundColor: "red" },
+          { backgroundColor: "var(--black)" }
+        ],
+        options: {
+          duration: 80,
+          iterations: 3
+        }
       }
-
-      background.animate(keyframe, options)
+      
+      background.animate(animation.keyframe, animation.options)
     },
     bip: element => {
-      const keyframe = [
-        { opacity: 0 },
-        { opacity: 100 }
-      ]
-      const options = {
-        duration: 100
+      const animation = {
+        keyframe: [
+          { opacity: 0 },
+          { opacity: 100 }
+        ],
+        options: {
+          duration: 100
+        }
       }
 
-      element.animate(keyframe, options)
+      element.animate(animation.keyframe, animation.options)
     },
+    NoNo: () => {
+      const header = document.querySelector("header")
+      const animation = {
+        keyframe: [
+          { opacity: 0 },
+          { opacity: 100 }
+        ],
+        options: {
+          duration: 100,
+          iterations: 3
+        }
+      }
+      header.animate(animation.keyframe, animation.options)
+    }
   },
   playSong: {
     button: color => new Audio(`../sounds/${color}.mp3`).play(),
@@ -74,7 +93,10 @@ for (const button of buttons) {
 }
 
 function handleClickController(event) {
-  console.log (event.target)
+  if (Game.started) {
+    const color = event.target.dataset.color
+    Game.includeSequence(color)
+  } else Game.animate.NoNo()
 }
 
 // key pressed controller
