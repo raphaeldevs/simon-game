@@ -109,7 +109,7 @@ const Game = {
   },
   innerLevel: function (message) {
     const levelElementDom = document.querySelector("#game-grid > header h1")
-    levelElementDom.textContent = `Level ${message}`
+    levelElementDom.textContent = message
   }
 }
 
