@@ -17,12 +17,9 @@ const Game = {
     this.playSong.gameOver()
   },
   sequence: [],
-  currentSequence: [],
+  sequencePlayer: [],
   currentLevel: 0,
   record: 0,
-  includeSequence: function (color) {
-    this.sequence.push(color)
-  },
   createSequence: function() {
     const random = Math.floor(Math.random() * 4) //from 0 to 3
     const buttonRamdomized = buttons[random]
@@ -34,6 +31,24 @@ const Game = {
     this.playSong.button(buttonColor)
 
     return this.sequence
+  },
+  includeSequence: function (color) {
+    this.sequencePlayer.push(color)
+    this.checkSequence()
+  },
+  checkSequence: function () {
+    const currentSequence = this.sequencePlayer.length - 1;
+
+    if (!this.sequencePlayer[currentSequence] === this.sequence[currentSequence]) {
+      this.over()
+    }
+
+    if (currentSequence + 1 === this.sequence.length) {
+      this.currentLevel += 1
+      this.sequencePlayer = []
+
+      this.createSequence()
+    }
   },
   animate: {
     gameOver: () => {
@@ -96,6 +111,8 @@ function handleClickController(event) {
   if (Game.started) {
     const color = event.target.dataset.color
     Game.includeSequence(color)
+    
+    Game.playSong.button(color)
   } else Game.animate.NoNo()
 }
 
