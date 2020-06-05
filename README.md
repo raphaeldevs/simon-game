@@ -2,8 +2,8 @@
   <img alt="Switch Game" src="switchImage.png" width="250px">
 </h1>
 
-<h3 align="center">
+<h2 align="center">
   Switch Game  
-</h3>
+</h2>
 
 #### Um jogo muito lega feito com HTML, CSS e Javascript puro
