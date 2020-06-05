@@ -4,6 +4,7 @@ const Game = {
   start: function() {
     this.canStart = false
     this.started = true
+    this.innerLevel()
 
     setTimeout(() => {
       this.createSequence()
@@ -48,6 +49,7 @@ const Game = {
 
     if (currentSequence + 1 === this.sequence.length) {
       this.currentLevel += 1
+      this.innerLevel()
       this.sequencePlayer = []
 
       setTimeout(() => {
@@ -102,6 +104,10 @@ const Game = {
   playSong: {
     button: color => new Audio(`../sounds/${color}.mp3`).play(),
     gameOver: () => { new Audio(`../sounds/wrong.mp3`).play()}
+  },
+  innerLevel: function () {
+    const levelElementDom = document.querySelector("#game-grid > header h1")
+    levelElementDom.textContent = `Level ${this.currentLevel}`
   }
 }
 
