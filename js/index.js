@@ -5,15 +5,18 @@ const Game = {
     this.canStart = false
     this.started = true
 
-    this.createSequence()
+    setTimeout(() => {
+      this.createSequence()
+    }, 1000);
   },
   over: function() {
     this.canStart = true
     this.started = false
 
     this.sequence = []
+    this.sequencePlayer = []
 
-    this.animation.gameOver()
+    this.animate.gameOver()
     this.playSong.gameOver()
   },
   sequence: [],
@@ -34,20 +37,22 @@ const Game = {
   },
   includeSequence: function (color) {
     this.sequencePlayer.push(color)
-    this.checkSequence()
+    this.checkSequence(color)
   },
-  checkSequence: function () {
+  checkSequence: function (color) {
     const currentSequence = this.sequencePlayer.length - 1;
 
-    if (!this.sequencePlayer[currentSequence] === this.sequence[currentSequence]) {
-      this.over()
-    }
+    if (this.sequencePlayer[currentSequence] === this.sequence[currentSequence]) {
+      Game.playSong.button(color)
+    } else this.over()
 
     if (currentSequence + 1 === this.sequence.length) {
       this.currentLevel += 1
       this.sequencePlayer = []
 
-      this.createSequence()
+      setTimeout(() => {
+        this.createSequence()
+      }, 1000);
     }
   },
   animate: {
@@ -96,7 +101,7 @@ const Game = {
   },
   playSong: {
     button: color => new Audio(`../sounds/${color}.mp3`).play(),
-    gameOver: () => {}
+    gameOver: () => { new Audio(`../sounds/wrong.mp3`).play()}
   }
 }
 
@@ -111,8 +116,6 @@ function handleClickController(event) {
   if (Game.started) {
     const color = event.target.dataset.color
     Game.includeSequence(color)
-    
-    Game.playSong.button(color)
   } else Game.animate.NoNo()
 }
 
