@@ -41,6 +41,8 @@ aside,
   grid-row: 1;
   text-transform: uppercase;
   color: var(--white);
+
+  text-align: center;
 }
 
 #game-grid .buttons-grid {
