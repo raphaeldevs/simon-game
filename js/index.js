@@ -18,9 +18,20 @@ const Game = {
   currentSequence: [],
   currentLevel: 0,
   record: 0,
-  animations: {
+  animate: {
     gameOver: () => {},
-    bip: () => {},
+    bip: element => {
+      const keyframe = [
+        { opacity: 0 },
+        { opacity: 100 }
+      ]
+      const options = {
+        duration: 100,
+        delay: 1000
+      }
+
+      element.animate(keyframe, options)
+    },
   },
   playSong: {
     button: color => new Audio(`../sounds/${color}.mp3`).play(),
@@ -36,7 +47,7 @@ for (const button of buttons) {
 }
 
 function handleClickController(event) {
-  console.log(event.target.dataset.color)
+  console.log (event.target)
 }
 
 
