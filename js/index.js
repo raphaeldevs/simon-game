@@ -22,8 +22,8 @@ const Game = {
   },
   sequence: [],
   sequencePlayer: [],
-  currentLevel: 0,
-  record: 0,
+  currentLevel: 1,
+  record: 1,
   createSequence: function() {
     const random = Math.floor(Math.random() * 4) //from 0 to 3
     const buttonRamdomized = buttons[random]
