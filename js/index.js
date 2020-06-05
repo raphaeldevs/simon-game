@@ -19,7 +19,20 @@ const Game = {
   currentLevel: 0,
   record: 0,
   animate: {
-    gameOver: () => {},
+    gameOver: () => {
+      const background = document.querySelector("#page-game")
+
+      const keyframe = [
+        { backgroundColor: "red" },
+        { backgroundColor: "var(--black)" }
+      ]
+      const options = {
+        duration: 80,
+        iterations: 3
+      }
+
+      background.animate(keyframe, options)
+    },
     bip: element => {
       const keyframe = [
         { opacity: 0 },
