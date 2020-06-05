@@ -72,15 +72,3 @@ aside,
 [data-color=green] {background-color: var(--green);}
 [data-color=blue] {background-color: var(--blue);}
 [data-color=yellow] {background-color: var(--yellow);}
-
-
-/* animations */
-@keyframes bip {
-  0% {opacity: 0;}
-  100% {opacity: 100;}
-}
-
-@keyframes error {
-  0% {background-color: red;}
-  100% {background-color: var(--black);}
-}
