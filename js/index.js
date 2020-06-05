@@ -49,10 +49,10 @@ const Game = {
 
     if (currentSequence + 1 === this.sequence.length) {
       this.currentLevel += 1
-      this.innerLevel()
       this.sequencePlayer = []
-
+      
       setTimeout(() => {
+        this.innerLevel()
         this.createSequence()
       }, 900);
     }
