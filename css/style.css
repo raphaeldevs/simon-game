@@ -1,0 +1,77 @@
+:root {
+  --black: #212227ff;
+  --white: #fdfffcff;
+  --red: #f40000ff;
+  --green: #0cce6bff;
+  --blue: #3c91e6ff;
+  --yellow: #facb0fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+#game-grid, 
+header,
+.buttons-grid,
+aside,
+.button { border: 1px solid var(--white); }
+
+#page-game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--black);
+
+  height: 100vh;
+}
+
+#game-grid {
+  display: grid;
+  grid-template: auto auto / 2fr 1fr;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--white);
+}
+
+#game-grid header {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+#game-grid .buttons-grid {
+  display: grid;
+  grid-template: auto auto / auto auto;
+
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  
+  grid-row: 2;
+  grid-column: 1;
+}
+
+#game-grid .button {
+  width: 100px;
+  height: 100px;
+
+  border-radius: 16px;
+}
+
+/* Buttons Colors */
+[data-color=red] {background-color: var(--red);}
+[data-color=green] {background-color: var(--green);}
+[data-color=blue] {background-color: var(--blue);}
+[data-color=yellow] {background-color: var(--yellow);}
+
+#game-grid aside {
+  grid-row: 1/2;
+  grid-column: 2;
+
+  text-align: center;
+}
