@@ -16,7 +16,7 @@ const Game = {
 
     this.sequence = []
     this.sequencePlayer = []
-    this.currentLevel = []
+    this.currentLevel = 1
     this.innerLevel("PRESS ENTER TO PLAY")
 
     this.animate.gameOver()
