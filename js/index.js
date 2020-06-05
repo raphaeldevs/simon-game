@@ -7,7 +7,7 @@ const Game = {
 
     setTimeout(() => {
       this.createSequence()
-    }, 1000);
+    }, 900);
   },
   over: function() {
     this.canStart = true
@@ -52,7 +52,7 @@ const Game = {
 
       setTimeout(() => {
         this.createSequence()
-      }, 1000);
+      }, 900);
     }
   },
   animate: {
