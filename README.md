@@ -6,4 +6,6 @@
   Switch Game  
 </h1>
 
-<h3 align="center">Um jogo muito lega feito com HTML, CSS e Javascript puro</h3>
+<h3 align="center">
+  <blockquote align="center">Um jogo muito legal feito com HTML, CSS e Javascript puro</blockquote>
+</h3>
