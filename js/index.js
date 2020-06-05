@@ -1,15 +1,17 @@
 const Game = {
   canStart: true,
   started: false,
-  start: () => {
-    createClickListeners()
-
+  start: function() {
     this.canStart = false
     this.started = true
+
+    this.createSequence()
   },
-  over: () => {
+  over: function() {
     this.canStart = true
     this.started = false
+
+    this.sequence = []
 
     this.animation.gameOver()
     this.playSong.gameOver()
@@ -18,6 +20,19 @@ const Game = {
   currentSequence: [],
   currentLevel: 0,
   record: 0,
+  createSequence: function() {
+    const random = Math.floor(Math.random() * 4) //from 0 to 3
+    const buttonRamdomized = buttons[random]
+    const buttonColor = buttonRamdomized.dataset.color
+
+    this.sequence.push(buttonColor)
+    this.currentSequence = []
+
+    this.animate.bip(buttonRamdomized)
+    this.playSong.button(buttonColor)
+
+    return this.sequence
+  },
   animate: {
     gameOver: () => {
       const background = document.querySelector("#page-game")
@@ -39,8 +54,7 @@ const Game = {
         { opacity: 100 }
       ]
       const options = {
-        duration: 100,
-        delay: 1000
+        duration: 100
       }
 
       element.animate(keyframe, options)
@@ -63,14 +77,12 @@ function handleClickController(event) {
   console.log (event.target)
 }
 
-
 // key pressed controller
 document.addEventListener('keypress', handleKeyPressController)
 
 function handleKeyPressController(event) {
   console.log(event.key)
 }
-
 
 //game.start => clickListeners, set variables
 
