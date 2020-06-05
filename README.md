@@ -23,7 +23,7 @@ Eu criei um objeto chamado Game que contém funções e valores booleanos que co
 A `feature/1.0` foi a primeira versão do projeto, eu usei algumas features do ES6 como `const` e arrow functions, no CSS usei grid (vou trabalhar na responsividade também), e no HTML usei o dataset `data-color` e `data-index`.
 
 
-[========]
+
 
 
 ## Conclusão
