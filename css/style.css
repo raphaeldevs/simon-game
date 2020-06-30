@@ -13,12 +13,6 @@
   box-sizing: border-box;
 }
 
-/* #game-grid, 
-header,
-.buttons-grid,
-aside,
-.button { border: 1px solid var(--white); } */
-
 #page-game {
   display: flex;
   justify-content: center;
@@ -33,7 +27,7 @@ aside,
 
 #game-grid {
   display: grid;
-  grid-template-rows: 50px 2fr;
+  grid-template-rows: auto auto;
   justify-content: center;
 }
 
@@ -41,6 +35,9 @@ aside,
   grid-row: 1;
   text-transform: uppercase;
   color: var(--white);
+  
+  font-size: 24px;
+  margin-bottom: 15px;
 
   text-align: center;
 }
@@ -57,12 +54,10 @@ aside,
 }
 
 #game-grid .button {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
 
-  border-radius: 16px;
-
-/*   animation: bip 100ms 1s 3 ease-in; */
+  border-radius: 32px;
 }
 
 #game-grid .button:active {
