@@ -26,9 +26,6 @@ Esse projeto é feito com Vanilla JS e usa muito da manipulação da DOM, anima�
 
 Atualmente esse projeto recebeu atualizações que refletem como o novo eu faria o código.</p>
 
-<br>
-
-
 ## Minha história com esse projeto
 
 <p align="justify">Esse projeto surgiu de uma inspiração de post no Instagram de um dev que havia feito um jogo parecido, com isso eu senti vontade de criar a minha versão e me desafiei como programador. Apesar de um iniciante, esse projeto me forçou a começar a girar as engrenagens na minha cabeça e fortalecer minha lógica de programação.</p>
