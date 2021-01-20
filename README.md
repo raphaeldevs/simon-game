@@ -16,8 +16,6 @@
 
 ## Minha história com esse projeto
 
----
-
 <p align="justify">Esse projeto surgiu de uma inspiração de post no Instagram de um dev que havia feito um jogo parecido, com isso eu senti vontade de criar a minha versão e me desafiei como programador. Apesar de um iniciante, esse projeto me forçou a começar a girar as engrenagens na minha cabeça e fortalecer minha lógica de programação.</p>
 
 <p align="justify">Eu havia começado a programar usando JS a cerca de 2 meses e foi um baita desafio e também um GRANDE impulso no meu aprendizado, onde eu pude filtrar os meus interesses e descobrir se programação realmente era pra mim. Descobri também uma característica pessoal muito relevante: a de aprender sozinho.</p>
@@ -26,18 +24,12 @@
 
 ## Por que Simon Game?
 
----
-
 <p align="justify">
 Esse projeto é feito com Vanilla JS e usa muito da manipulação da DOM, animações via JS usando o método `element.animate()`, reprodução de sons, timers... É um ótimo projeto pra fortalecer muitos conceitos do front-end e de uma forma bem divertida e recompensadora.
 
 Atualmente esse projeto recebeu atualizações que refletem como o novo eu faria o código.</p>
 
 ## Tecnologias
-
----
-
-<br>
     
 <p align="center">
 
@@ -51,7 +43,6 @@ Atualmente esse projeto recebeu atualizações que refletem como o novo eu faria
 
 ## Aprendizados
 
----
 * CSS
   * Display grid
   * Variáveis (Aprendi nesse projeto)
