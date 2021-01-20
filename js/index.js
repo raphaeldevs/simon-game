@@ -1,141 +1,149 @@
 const Game = {
-  canStart: true,
   started: false,
-  start: function() {
-    this.canStart = false
-    this.started = true
-    this.innerLevel(`Level ${this.currentLevel}`)
+  canPlay: false,
 
-    setTimeout(() => {
-      this.createSequence()
-    }, 900);
-  },
-  over: function() {
-    this.canStart = true
-    this.started = false
-
-    this.sequence = []
-    this.sequencePlayer = []
-    this.currentLevel = 1
-    this.innerLevel("PRESS ENTER TO PLAY")
-
-    this.animate.gameOver()
-    this.playSong.gameOver()
-  },
   sequence: [],
   sequencePlayer: [],
   currentLevel: 1,
   record: 1,
-  createSequence: function() {
-    const random = Math.floor(Math.random() * 4) //from 0 to 3
-    const buttonRamdomized = buttons[random]
-    const buttonColor = buttonRamdomized.dataset.color
 
-    this.sequence.push(buttonColor)
-
-    this.animate.bip(buttonRamdomized)
-    this.playSong.button(buttonColor)
-
-    return this.sequence
-  },
-  includeSequence: function (color) {
-    this.sequencePlayer.push(color)
-    this.checkSequence(color)
-  },
-  checkSequence: function (color) {
-    const currentSequence = this.sequencePlayer.length - 1;
-
-    if (this.sequencePlayer[currentSequence] === this.sequence[currentSequence]) {
-      Game.playSong.button(color)
-    } else this.over()
-
-    if (currentSequence + 1 === this.sequence.length) {
-      this.currentLevel += 1
-      this.sequencePlayer = []
-      
-      setTimeout(() => {
-        this.innerLevel(`Level ${this.currentLevel}`)
-        this.createSequence()
-      }, 900);
-    }
-  },
   animate: {
     gameOver: () => {
-      const background = document.querySelector("#page-game")
+      const background = document.querySelector('#page-game')
       const animation = {
-        keyframe: [
-          { backgroundColor: "red" },
-          { backgroundColor: "var(--black)" }
+        keyframes: [
+          { backgroundColor: 'var(--red)' },
+          { backgroundColor: 'var(--black)' }
         ],
         options: {
           duration: 80,
           iterations: 3
         }
       }
-      
-      background.animate(animation.keyframe, animation.options)
+
+      background.animate(animation.keyframes, animation.options)
     },
-    bip: element => {
+    blink: element => {
       const animation = {
-        keyframe: [
-          { opacity: 0 },
-          { opacity: 100 }
-        ],
+        keyframes: [{ opacity: 0 }, { opacity: 100 }],
         options: {
           duration: 100
         }
       }
 
-      element.animate(animation.keyframe, animation.options)
+      element.animate(animation.keyframes, animation.options)
     },
     NoNo: () => {
-      const header = document.querySelector("header")
+      const header = document.querySelector('header')
       const animation = {
-        keyframe: [
-          { opacity: 0 },
-          { opacity: 100 }
-        ],
+        keyframes: [{ opacity: 0 }, { opacity: 100 }],
         options: {
           duration: 100,
           iterations: 3
         }
       }
-      header.animate(animation.keyframe, animation.options)
+      header.animate(animation.keyframes, animation.options)
     }
   },
+
   playSong: {
-    button: color => new Audio(`../sounds/${color}.mp3`).play(),
-    gameOver: () => { new Audio(`../sounds/wrong.mp3`).play()}
+    color: color => new Audio(`../sounds/${color}.mp3`).play(),
+    gameOver: () => new Audio(`../sounds/wrong.mp3`).play()
   },
-  innerLevel: function (message) {
-    const levelElementDom = document.querySelector("#game-grid > header h1")
-    levelElementDom.textContent = message
+
+  start() {
+    this.started = true
+    
+    this.innerMessage(`Level ${this.currentLevel}`)
+
+    setTimeout(() => {
+      this.createSequence()
+    }, 900)
+  },
+
+  finish() {
+    this.started = false
+    this.canPlay = false
+
+    this.sequence = []
+    this.sequencePlayer = []
+
+    this.currentLevel = 1
+    this.innerMessage('PRESS ENTER TO PLAY')
+
+    this.animate.gameOver()
+    this.playSong.gameOver()
+  },
+
+  createSequence() {
+    const randomIndex = Math.floor(Math.random() * (3 - 0 + 1)) + 0
+    const randomButton = buttons[randomIndex]
+    const { color } = randomButton.dataset
+
+    this.sequence.push(color)
+
+    this.animate.blink(randomButton)
+    this.playSong.color(color)
+
+    this.canPlay = true
+  },
+
+  includeSequence(color) {
+    this.sequencePlayer.push(color)
+
+    this.checkSequence(color)
+  },
+
+  checkSequence(color) {
+    const currentSequence = this.sequencePlayer.length - 1
+    const isLastIndexInSequence = currentSequence + 1 === this.sequence.length
+
+    const isCorrectSequence =
+      this.sequencePlayer[currentSequence] === this.sequence[currentSequence]
+
+    if (!isCorrectSequence) return this.finish()
+
+    this.playSong.color(color)
+
+    if (isLastIndexInSequence) {
+      this.canPlay = false
+
+      this.nextLevel()
+    }
+  },
+
+  nextLevel() {
+    this.currentLevel += 1
+    this.sequencePlayer = []
+
+    setTimeout(() => {
+      this.innerMessage(`Level ${this.currentLevel}`)
+      this.createSequence()
+    }, 900)
+  },
+
+  handleKeypress({ key }) {
+    if (!this.started && key === 'Enter') this.start()
+  },
+
+  handleClick(event) {
+    if (!this.canPlay) return this.animate.NoNo()
+
+    const { color } = event.target.dataset
+  
+    this.includeSequence(color)
+  },
+
+  innerMessage(message) {
+    const title = document.querySelector('#game header h1')
+    title.textContent = message
   }
 }
 
-// Click Controller
-const buttons = document.querySelectorAll(".button");
+const buttons = document.querySelectorAll('.button')
 
-for (const button of buttons) {
-  button.addEventListener('click', handleClickController)
-}
+buttons.forEach(button => {
+  button.addEventListener('click', event => Game.handleClick(event))
+})
 
-function handleClickController(event) {
-  if (Game.started) {
-    const color = event.target.dataset.color
-    Game.includeSequence(color)
-  } else Game.animate.NoNo()
-}
-
-// key pressed controller
-document.addEventListener('keypress', handleKeyPressController)
-
-function handleKeyPressController(event) {
-  if (Game.canStart && event.key === "Enter") {
-    Game.start()
-  }
-}
-
-//game.start => clickListeners, set variables
-
-// click listener => check click => function to add sequence
+document.addEventListener('keypress', event => Game.handleKeypress(event))
