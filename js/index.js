@@ -5,7 +5,6 @@ const Game = {
   sequence: [],
   sequencePlayer: [],
   currentLevel: 1,
-  record: 1,
 
   animate: {
     gameOver: () => {
