@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Switch Game" src="switchImage.png" width="250px">
+  <img alt="Switch Game" src="simon-game.png" width="250px">
 </p>
 
 <h1 align="center">
