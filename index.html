@@ -1,46 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt_br">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Switch Game</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Switch Game</title>
+    <!-- Google Fonts: Roboto Bold -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
 
-  <!-- Estilo CSS -->
-  <link rel="stylesheet" href="css/style.css">
-</head>
+    <!-- Styles CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
+  <body>
+    <div id="page-game">
+      <main id="game">
+        <header>
+          <h1>Press enter to play</h1>
+        </header>
 
-  <!-- Estrutura
-    page-game: container
-      game-grid: grid page
-        header
-        .buttons0grid
-        aside
-          header
-          ul
-  -->
+        <div class="buttons-grid">
+          <div data-color="red" class="button"></div>
+          <div data-color="green" class="button"></div>
+          <div data-color="blue" class="button"></div>
+          <div data-color="yellow" class="button"></div>
+        </div>
 
+        <div class="button-start">PLAY</div>
+      </main>
+    </div>
 
-  <div id="page-game">
-    <main id="game-grid">
-      <header>
-        <h1>Press enter to play</h1>
-      </header>
-
-      <div class="buttons-grid">
-        <div data-index="0" data-color="red" class="button"></div>
-        <div data-index="1" data-color="green" class="button"></div>
-        <div data-index="2" data-color="blue" class="button"></div>
-        <div data-index="3" data-color="yellow" class="button"></div>
-      </div>
-
-    </main>
-  </div>
-
-</body>
-
-  <script src="js/index.js"></script>
-
+    <script src="js/index.js"></script>
+  </body>
 </html>
