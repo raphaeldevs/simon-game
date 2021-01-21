@@ -48,10 +48,26 @@ Atualmente esse projeto recebeu atualizações que refletem como o novo eu faria
 
 ## Aprendizados
 
+
+* HTML
+  * Atribuitos customizados: `data-<custom>`
+  ```html 
+    <button data-color="red" />
+  ```
+
 * CSS
   * Display grid
-  * Variáveis (Aprendi nesse projeto)
   * Responsividade
+  * Variáveis (Aprendi nesse projeto)
+  ```css
+    :root {
+      --red: #f40000;
+    }
+    
+    button {
+      background-color: var(--red);
+    }
+  ```
   
 * JavaScript
   * Manipulando a DOM com `element.querySelector` e `element.querySelectorAll`
@@ -65,6 +81,16 @@ Atualmente esse projeto recebeu atualizações que refletem como o novo eu faria
   * Event Listeners: click e keypress
 
   * Reprodução de sons
+  
+  * Recuperação dos dados criados usando o atributo `data` no HTML:
+  ```javascript
+    const button = document.querySelector('button')
+    
+    const { color } = button.dataset
+    
+    console.log(color)
+      > "red"
+  ```
 
 
 ## Conclusão
